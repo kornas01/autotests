@@ -9,6 +9,7 @@ class BasePage:
         self.login_link = page.locator('a:has-text("Log in")')
         self.cart_link = page.locator('a:has-text("Shopping cart")').first
         self.info_links = page.locator('.footer a')
+        self.product_boxes = page.locator('.product-item')
 
     def go_to(self):
         self.page.goto('https://demo.nopcommerce.com/')
@@ -39,3 +40,23 @@ class BasePage:
         except:
             print("Не удалось получить количество товаров в корзине")
             return 0
+
+    def go_to_cart(self):
+        """Перейти в корзину"""
+        self.cart_link.click()
+
+    def click_first_product(self):
+        """Кликнуть на первый товар на главной"""
+        #if self.product_boxes.count() > 0:
+           # self.product_boxes.first.click()
+           # return True
+        #return False
+        """Кликнуть на второй товар на главной, тк в первом товаре слишком много обязательных кнопок"""
+        if self.product_boxes.count() > 1:
+            self.product_boxes.nth(1).click()  # Индексация начинается с 0
+            return True
+        return False
+
+    def get_products_count(self):
+        """Получить количество товаров на главной"""
+        return self.product_boxes.count()

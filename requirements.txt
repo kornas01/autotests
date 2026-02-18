@@ -1,0 +1,8 @@
+pip~=25.3
+wheel~=0.45.1
+setuptools~=80.9.0
+pytest==7.4.0
+selenium==4.11.2
+webdriver-manager==3.9.1
+allure-pytest==2.13.2
+requests==2.31.0
